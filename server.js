@@ -17,7 +17,7 @@ app.get('/webhook', (req, res) => {
         return res.status(200).send(challenge);
     }
 
-    res.sendStatus(403);
+    return res.sendStatus(403);
 });
 
 app.post('/webhook', (req, res) => {
