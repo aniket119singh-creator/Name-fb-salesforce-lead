@@ -13,7 +13,7 @@ app.get('/webhook', (req, res) => {
 
     const mode = req.query['hub.mode'];
     const token = req.query['hub.verify_token'];
-    const challenge = req.query['hub.challenge'];
+    const challenge = req.query['hub.challenge']; 
 
     if (mode && token === VERIFY_TOKEN) {
 
