@@ -6,6 +6,7 @@ app.use(express.json());
 
 const VERIFY_TOKEN = 'facebook123';
 
+// VERIFY WEBHOOK
 app.get('/webhook', (req, res) => {
 
     console.log('GET WEBHOOK CALLED');
@@ -21,24 +22,19 @@ app.get('/webhook', (req, res) => {
         return res.status(200).send(challenge);
     }
 
-    return res.sendStatus(403);
+    res.sendStatus(403);
 });
 
+// RECEIVE FACEBOOK LEADS
 app.post('/webhook', (req, res) => {
 
-    console.log('==============================');
     console.log('NEW FACEBOOK LEAD RECEIVED');
     console.log(JSON.stringify(req.body, null, 2));
-    console.log('==============================');
 
-    return res.status(200).send('EVENT_RECEIVED');
+    res.sendStatus(200);
 });
 
-app.get('/', (req, res) => {
-    res.send('Server Running');
-});
-
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
     console.log(`Server Started on port ${PORT}`);
